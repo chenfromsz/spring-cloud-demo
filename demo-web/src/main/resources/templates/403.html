@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html><html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>error</title>
+</head>
+<body>
+<h1>找不到页面！</h1>
+<div th:if="${message}">
+    <p th:text="${message}">
+        message
+    </p>
+</div>
+<p>点击 <a th:href="@{/}">这里</a> 到首页</p>
+</body>
+</html>

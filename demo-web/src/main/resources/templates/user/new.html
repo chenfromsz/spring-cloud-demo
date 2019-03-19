@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<script th:src="@{/scripts/user/new.js}"></script>
+<form id="saveForm" action="./save" method="post">
+    <table class="addNewInfList">
+        <tr>
+            <th>昵称</th>
+            <td width="240">
+                <input class="inp-list w-200 clear-mr f-left" type="text" name="nickName" id="nickName" maxlength="32" />
+                <span class="tipStar f-left">*</span>
+            </td>
+            <th>城市</th>
+            <td width="240">
+                <input class="inp-list w-200 clear-mr f-left" type="text" name="city" id="city" maxlength="32" />
+            </td>
+        </tr>
+        <tr>
+            <th>性别</th>
+            <td>
+                <div class="selectDownMode f-left w-206">
+                    <input type="text"  value="请选择"/>
+                    <select class="selectMode" name="gender">
+                        <option value="">请选择</option>
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </div>
+            </td>
+            <th>省份</th>
+            <td width="240">
+                <input class="inp-list w-200 clear-mr f-left" type="text" name="province" id="province" maxlength="32" />
+            </td>
+        </tr>
+    </table>
+    <div class="bottomBtnBox">
+        <a class="btn-93X38 saveBtn" href="javascript:void(0)">确定</a>
+        <a class="btn-93X38 backBtn" href="javascript: closeDialog()">返回</a>
+    </div>
+</form>

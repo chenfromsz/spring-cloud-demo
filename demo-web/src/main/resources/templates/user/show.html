@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="addInfBtn">
+    <h3 class="itemTit"><span>用户信息</span></h3>
+    <table class="addNewInfList">
+        <tr>
+            <th>昵称</th>
+            <td width="240"><input class="inp-list w-200 clear-mr f-left" type="text" th:value="${user.nickName}" readonly="true"/></td>
+            <th>城市</th>
+            <td><input class="inp-list w-200 clear-mr f-left" type="text" th:value="${user.city}" readonly="true" /></td>
+        </tr>
+        <tr>
+            <th>性别</th>
+            <td>
+                <input class="inp-list w-200 clear-mr f-left" type="text" th:if="${user.gender==0}" th:value="男" readonly="true"/>
+                <input class="inp-list w-200 clear-mr f-left" type="text" th:if="${user.gender==1}" th:value="女" readonly="true"/>
+            </td>
+            <th>日期</th>
+            <td>
+                <input  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" class="inp-list w-200 clear-mr f-left" th:value="${user.created} ? ${#dates.format(user.created,'yyyy-MM-dd HH:mm:ss')} :''" readonly="true"/>
+            </td>
+        </tr>
+    </table>
+    <div class="bottomBtnBox">
+        <a class="btn-93X38 backBtn" href="javascript:closeDialog(0)">返回</a>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: restapi
+#  profiles:
+#    active: deve
+#spring:
+  cloud:
+    consul:
+      config:
+        enabled: true   #默认是true --
+        format: YAML    # 表示consul上面文件的格式 有四种 YAML PROPERTIES KEY-VALUE FILES
+        data-key: data    #表示consul上面的KEY值(或者说文件的名字) 默认是data
+        defaultContext: ${spring.application.name}
+
+
