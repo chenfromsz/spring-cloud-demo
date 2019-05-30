@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-data" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/Basisdt.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/Basistopbg.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/BigIconFirm.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/BigIconMobile.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/BigIconWebo.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/Bigbg.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/FourStar.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/cur.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/footbg.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/microBoxLi.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/microBoxbg.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/nav-a-hover.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/qutama.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/images/home/top-bg.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/scripts/imageselect.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/demo-web/src/main/resources/static/styles/home.css" charset="GBK" />
+  </component>
+</project>
