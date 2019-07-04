@@ -27,7 +27,7 @@ public class UserTest {
     @Autowired
     private UserService userService;
 
-    @Test
+    //@Test
     public void insertData(){
 
         User user = new User();
@@ -54,7 +54,7 @@ public class UserTest {
     }
 
 
-    //@Test
+    @Test
     public void findUserPage() throws Exception{
         UserQo userQo = new UserQo();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

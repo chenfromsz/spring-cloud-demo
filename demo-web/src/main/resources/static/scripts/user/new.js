@@ -8,7 +8,7 @@ $(function(){
  	});
 $('.saveBtn').click(function(){
 	 if($('#saveForm').valid()){
-         $.ajax({
+          $.ajax({
              type: "POST",
              url: "./save",
              data: $("#saveForm").serialize(),
@@ -22,7 +22,7 @@ $('.saveBtn').click(function(){
                      alert(data);
                  }
              }
-         });
+          });
 		 }else{
 			 alert('数据验证失败，请检查！');
 		 }
