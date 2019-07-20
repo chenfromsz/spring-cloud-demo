@@ -13,9 +13,11 @@
     <script th:src="@{/scripts/user/list.js}"></script>
 </head>
 <body>
+<!--状态栏-->
 <div class="locationLine" layout:fragment="prompt">
     当前位置：首页 &gt; <em >用户管理</em>
 </div>
+<!--主要内容区域-->
 <div class="statisticBox w-782"  layout:fragment="content">
     <form id="queryForm" method="get">
         <div class="radiusGrayBox782">
