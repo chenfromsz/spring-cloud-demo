@@ -13,7 +13,11 @@ spring:
         tags: urlprefix-/${spring.application.name}
         instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
 
-#链路跟踪
+#允许多个接口使用相同的服务
+  main:
+    allow-bean-definition-overriding: true
+
+#链路跟踪配置
   sleuth:
     sampler:
       probability: 1.0
