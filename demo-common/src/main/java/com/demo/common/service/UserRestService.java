@@ -1,4 +1,4 @@
-package com.demo.web.service;
+package com.demo.common.service;
 
 import com.demo.common.UserQo;
 import com.google.gson.Gson;
