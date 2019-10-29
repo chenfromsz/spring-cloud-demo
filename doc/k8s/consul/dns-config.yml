@@ -1,0 +1,41 @@
+#https://www.consul.io/docs/platform/k8s/dns.html
+#kubectl edit configmap coredns -n kube-system
+
+#kubectl get service -n kube-system
+#kube-dns  ClusterIP   10.0.255.185   <none>  53/TCP,53/UDP
+
+##add:
+#        consul {
+#          errors
+#          cache 30
+#          forward . 10.0.255.185
+#        }
+---
+apiVersion: v1
+data:
+  Corefile: |2-
+        .:53 {
+            errors
+            health
+            kubernetes cluster.local. in-addr.arpa ip6.arpa {
+                pods insecure
+                upstream
+                fallthrough in-addr.arpa ip6.arpa
+            }
+            prometheus :9153
+            proxy . /etc/resolv.conf
+            cache 30
+            reload
+            loadbalance
+        }
+        consul {
+          errors
+          cache 30
+          forward . 10.0.255.185
+        }
+kind: ConfigMap
+metadata:
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
+  name: coredns
+  namespace: kube-system

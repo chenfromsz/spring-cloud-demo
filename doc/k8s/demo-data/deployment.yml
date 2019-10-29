@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dataapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dataapi
+  template:
+    metadata:
+      labels:
+        app: dataapi
+    spec:
+      containers:
+      - name: dataapi
+        image: registry.mydomain/demo/demo-data:1.0.0
+        ports:
+        - containerPort: 8080

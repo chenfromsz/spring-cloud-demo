@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: consul
+spec:
+  serviceName: consul
+  replicas: 3
+  selector:
+    matchLabels:
+      app: consul
+  template:
+    metadata:
+      labels:
+        app: consul
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - consul
+              topologyKey: kubernetes.io/hostname
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: consul
+        image: consul:1.4.0-rc1
+        args:
+             - "agent"
+             - "-server"
+             - "-bootstrap-expect=3"
+             - "-ui"
+             - "-data-dir=/consul/data"
+             - "-bind=0.0.0.0"
+             - "-client=0.0.0.0"
+             - "-advertise=$(PODIP)"
+             - "-retry-join=consul-0.consul.$(NAMESPACE).svc.cluster.local"
+             - "-retry-join=consul-1.consul.$(NAMESPACE).svc.cluster.local"
+             - "-retry-join=consul-2.consul.$(NAMESPACE).svc.cluster.local"
+             - "-domain=cluster.local"
+             - "-disable-host-node-id"
+        volumeMounts:
+            - name: data
+              mountPath: /consul/data
+        env:
+            - name: PODIP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+        ports:
+            - containerPort: 8500
+              name: ui-port
+            - containerPort: 8400
+              name: alt-port
+            - containerPort: 53
+              name: udp-port
+            - containerPort: 8443
+              name: https-port
+            - containerPort: 8080
+              name: http-port
+            - containerPort: 8301
+              name: serflan
+            - containerPort: 8302
+              name: serfwan
+            - containerPort: 8600
+              name: consuldns
+            - containerPort: 8300
+              name: server
+      volumes:
+    		- name: data
+      		hostPath:
+            path: /home/data

@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-consul
+  namespace: default
+  annotations:
+    kubernets.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: consul.mydomain
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: consul
+          servicePort: 8500
