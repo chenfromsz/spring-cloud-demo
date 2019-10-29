@@ -2,21 +2,14 @@ server:
   port: 8081
 
 spring:
-  cloud:
-    consul:
-      host: 127.0.0.1
-      port: 8500
-      discovery:
-        serviceName: ${spring.application.name}
-        healthCheckPath: /actuator/health
-        healthCheckInterval: 15s
-        tags: urlprefix-/${spring.application.name}
-        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
-
 #允许多个接口使用相同的服务
   main:
     allow-bean-definition-overriding: true
-
+#是否失败重试(true)
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
 #链路跟踪配置
   sleuth:
     sampler:
@@ -25,29 +18,41 @@ spring:
     sender:
       type: web
     base-url: http://localhost:9411/
+#spring更改类程序文件不使用热部署自动重启
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
 
----
 #是否开启断路器(false)
-feign.hystrix.enabled: true
-#是否失败重试(true)
-spring.cloud.loadbalancer.retry.enabled: true
+feign:
+  hystrix:
+    enabled: true
+
 #断路器超时配置(true)
-hystrix.command.default.execution.timeout.enabled: true
-#断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试(>ConnectTimeout+ReadTimeout)
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 19000
-#并发执行的最大线程数(10)
-hystrix.threadpool.default.coreSize: 500
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+      #断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试(>ConnectTimeout+ReadTimeout)
+      isolation:
+        thread:
+          timeoutInMilliseconds: 19000
+  #并发执行的最大线程数(10)
+  threadpool:
+    default:
+      coreSize: 500
 #负载超时配置
-ribbon.ConnectTimeout: 3000
-ribbon.ReadTimeout: 15000
-#对所有操作请求都进行重试
-ribbon.OkToRetryOnAllOperations: true
-#切换实例的重试次数
-ribbon.MaxAutoRetriesNextServer: 1
-#对当前实例的重试次数
-ribbon.MaxAutoRetries: 0
----
-#spring devtools 更改类程序文件不使用热部署自动重启
-spring.devtools.restart.enabled: false
-spring.devtools.livereload.enabled: false
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 15000
+  #对所有操作请求都进行重试
+  OkToRetryOnAllOperations: true
+  #切换实例的重试次数
+  MaxAutoRetriesNextServer: 1
+  #对当前实例的重试次数
+  MaxAutoRetries: 0
 

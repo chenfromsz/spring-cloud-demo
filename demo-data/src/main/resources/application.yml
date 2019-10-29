@@ -2,18 +2,6 @@ server:
   port: 8080
 
 spring:
-  cloud:
-    consul:
-      host: 127.0.0.1
-      port: 8500
-      discovery:
-        serviceName: ${spring.application.name}
-        healthCheckPath: /actuator/health
-        healthCheckInterval: 15s
-        tags: urlprefix-/${spring.application.name}
-        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
-#---
-#spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&useSSL=false
