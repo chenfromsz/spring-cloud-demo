@@ -73,6 +73,6 @@ spec:
             - containerPort: 8300
               name: server
       volumes:
-    		- name: data
-      		hostPath:
-            path: /home/data
+        - name: data
+      	  hostPath:
+          path: /home/data
