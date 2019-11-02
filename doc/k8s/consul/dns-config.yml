@@ -1,20 +1,20 @@
 #https://www.consul.io/docs/platform/k8s/dns.html
-#kubectl edit configmap coredns -n kube-system
 
 #kubectl get service -n kube-system
-#kube-dns  ClusterIP   10.0.255.185   <none>  53/TCP,53/UDP
+##kube-dns  ClusterIP   10.0.251.185   <none>  56/TCP,56/UDP
 
+#kubectl edit configmap coredns -n kube-system
 ##add:
 #        consul {
 #          errors
 #          cache 30
-#          forward . 10.0.255.185
+#          forward . 10.0.251.185
 #        }
 ---
 apiVersion: v1
 data:
   Corefile: |2-
-        .:53 {
+        .:56 {
             errors
             health
             kubernetes cluster.local. in-addr.arpa ip6.arpa {
@@ -31,7 +31,7 @@ data:
         consul {
           errors
           cache 30
-          forward . 10.0.255.185
+          forward . 10.0.251.185
         }
 kind: ConfigMap
 metadata:
